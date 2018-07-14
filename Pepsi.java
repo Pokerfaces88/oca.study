@@ -6,6 +6,7 @@ public class Pepsi implements checkable{
 
 	Date dateNow = new Date();
 	Date leaveWork = new Date();
+	Scanner scanner = new Scanner(System.in);
 	
 //	SimpleDateFormat formatTime = new SimpleDateFormat ("E dd.MM.yyyy 'at' hh:mm:ss");
 //	System.out.println("Current Time: " + formatTime.format(this.dateNow));
@@ -30,11 +31,40 @@ public class Pepsi implements checkable{
 		Date leaveWork = cal.getTime();
 		return leaveWork;
 	}
-
+	
+	public void visitShop() {
+		
+		Random checkPepsi = new Random();
+		boolean maybePepsi = checkPepsi.nextBoolean();
+		
+		if(maybePepsi = true) {
+			System.out.println("Buy all the Pepsi!");
+		}
+		else if(maybePepsi = false){
+			System.out.println("God damn it");
+			nextShop();
+		}
+	}
+	
+	public void nextShop() {
+		visitShop();
+	}
 
 	public void pingRowan() {
 
 		System.out.println("Do we have Pepsi?");
+		
+		try {
+			String s = scanner.next();
+			if (s == "n") {
+				visitShop();
+			}
+			else if(s == "y"){
+				System.out.println("Cool, be home in an hour so");
+			}
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public void check() {
@@ -47,6 +77,7 @@ public class Pepsi implements checkable{
 		
 		do {
 			this.pingRowan();
+			this.visitShop();
 			break;
 		} while (leaveWork != this.dateNow);
 	}
